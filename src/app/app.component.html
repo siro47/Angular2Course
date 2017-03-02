@@ -1,6 +1,4 @@
 <h1>
   {{section_title}}
 </h1>
-<div *ngFor="let user of users">
-  <span>{{user.name}}</span> - <span>{{user.desc}}</span>
-</div>
+<custom-card *ngFor="let user of users" [data]="user"></custom-card>
