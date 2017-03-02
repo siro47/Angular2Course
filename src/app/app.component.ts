@@ -30,4 +30,8 @@ export class AppComponent {
     new User("5", "Milhouse", "Nobody likes Milhouse!", "./resources/images/milhouse.jpeg"),
     new User("6", "Ppal. Skinner", "I love my mum", "./resources/images/skinner.png"),
   ]
+
+  public addNewUser() {
+    this.users.push(new User("7", "Moe", "Prettiest bartender ever", "./resources/images/moe.png"));
+  }
 }

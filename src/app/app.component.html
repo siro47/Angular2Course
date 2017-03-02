@@ -4,3 +4,7 @@
 <div *ngFor="let user of users" class="col-xs-12 col-sm-6 col-md-6">
   <custom-card [data]="user"></custom-card>
 </div>
+
+<div class="col-xs-12">
+  <button md-button class="pull-right" (click)="addNewUser()">add</button>
+</div>
