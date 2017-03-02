@@ -1,3 +1,6 @@
 <h1>
-  {{title}}
+  {{section_title}}
 </h1>
+<div *ngFor="let user of users">
+  <span>{{user.name}}</span> - <span>{{user.desc}}</span>
+</div>
