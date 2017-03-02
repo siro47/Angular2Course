@@ -1,0 +1,15 @@
+.card-container {
+  background-color: rgba(236,239,241,0.56);
+  box-shadow: 3px 2px 6px rgba(0,0,0,0.24);
+  margin-bottom: 30px;
+  margin-right: 30px;
+  height: 100px;
+  padding: 10px;
+}
+
+.card-container img {
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+}

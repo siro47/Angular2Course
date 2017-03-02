@@ -1,2 +1,10 @@
-<span>{{data.name}}</span> - <span>{{data.desc}}</span>
+<div class="card-container">
+  <div class="card-image col-xs-4">
+    <img width="100px" height="80px" [src]="data.image"/>
+  </div>
+  <div class="col-xs-7">
+    <h4>{{data.name}}</h4>
+    <p>{{data.desc}}</p>
+  </div>
+</div>
 
