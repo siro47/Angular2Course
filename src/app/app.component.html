@@ -2,7 +2,7 @@
   {{section_title}}
 </h1>
 <div *ngFor="let user of users" class="col-xs-12 col-sm-6 col-md-6">
-  <custom-card [data]="user"></custom-card>
+  <custom-card (removeClicked)="removeUser($event, data)" [data]="user"></custom-card>
 </div>
 
 <div class="col-xs-12">
