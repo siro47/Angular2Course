@@ -12,10 +12,15 @@ import { CustomCardComponent } from './custom-card/custom-card.component';
 import { UsersSectionComponent } from './users-section/users-section.component';
 import { GroupsSectionComponent } from './groups-section/groups-section.component';
 import { UsersFormComponent } from './users-section/users-form/users-form.component';
+import { LoginComponent } from './login/login.component';
+import { UserDetailsComponent } from './users-section/user-details/user-details.component';
 
 const appRoutes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'users', component: UsersSectionComponent },
-  { path: 'groups', component: GroupsSectionComponent }
+  { path: 'user/:id', component: UserDetailsComponent },
+  { path: 'groups', component: GroupsSectionComponent },
+  { path: '**', redirectTo: '/login'}
 ]
 
 @NgModule({
@@ -24,7 +29,9 @@ const appRoutes: Routes = [
     CustomCardComponent,
     UsersSectionComponent,
     GroupsSectionComponent,
-    UsersFormComponent
+    UsersFormComponent,
+    LoginComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
