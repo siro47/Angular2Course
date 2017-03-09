@@ -23,7 +23,7 @@ export class UsersSectionComponent implements OnInit {
   }
 
   public addNewUser() {
-    this.usersService.addUser(new User("7", "Moe", "Prettiest bartender ever", "./resources/images/moe.png"))
+    this.router.navigate(['/users/form']);
   }
 
   private removeUser(data) {

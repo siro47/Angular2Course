@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
@@ -22,6 +22,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: AdminLayoutComponent, children: [
     { path: 'users', component: UsersSectionComponent  },
+    { path: 'users/form', component: UsersFormComponent},
     { path: 'user/:id', component: UserDetailsComponent, data: {title: 'hello'}},
     { path: 'groups', component: GroupsSectionComponent }
   ]},
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     MaterialModule,
     Angular2FontAwesomeModule,
