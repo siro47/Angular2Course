@@ -17,6 +17,7 @@ import { UserDetailsComponent } from './users-section/user-details/user-details.
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
 import { UsersService } from "./users-section/users.service";
+import { SimpsonNameDirective } from './shared/simpson-name.directive';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     UsersFormComponent,
     LoginComponent,
     UserDetailsComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    SimpsonNameDirective
   ],
   imports: [
     BrowserModule,
