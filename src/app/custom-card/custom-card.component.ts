@@ -12,6 +12,9 @@ export class CustomCardComponent implements OnInit {
   @Output()
   removeClicked = new EventEmitter();
 
+  @Output()
+  imgClicked = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
@@ -19,5 +22,9 @@ export class CustomCardComponent implements OnInit {
 
   private removeCard() {
     this.removeClicked.emit(this.data);
+  };
+
+  private imageClicked() {
+    this.imgClicked.emit(this.data);
   };
 }
