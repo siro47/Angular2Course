@@ -1,0 +1,15 @@
+.wrapper {
+  height: 1000px;
+  background-color: rgba(255,0,0,0.5);
+}
+
+.loginForm {
+  padding: 200px 50px;
+  text-align: center;
+}
+
+.loginInput {
+  width: 200px;
+  height: 30px;
+  margin-bottom: 20px;
+}
