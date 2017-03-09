@@ -2,16 +2,16 @@
   <div class="col-md-6">
     <img width=600px height=600px src="/resources/images/bubble_message.png"/>
   </div>
-  <div class="col-md-6 loginForm">
+  <form #myForm="ngForm" (ngSubmit)="checkForm(myForm)" class="col-md-6 loginForm">
     <h3> ADMINISTRATOR PAGE</h3>
     <div>
-      <input class="loginInput" type="text" placeholder="Insert name..."/>
+      <input class="loginInput" type="text" name="username" placeholder="Insert name..." ngModel required/>
     </div>
     <div >
-      <input class="loginInput" type="text" placeholder="Insert password..."/>
+      <input class="loginInput" type="text" name="password" placeholder="Insert password..." ngModel required/>
     </div>
     <br>
-    <button routerLink="/">LOG IN</button>
-  </div>
+    <button class="btn btn-danger" [disabled]="!myForm.valid" type="submit" >LOG IN</button>
+  </form>
 </div>
 
