@@ -19,16 +19,15 @@ export class UsersSectionComponent implements OnInit {
               private usersService: UsersService) { }
 
   ngOnInit () {
-    this.users = this.usersService.getUsers()
+    this.usersService.getUsers().then(users => this.users = users)
   }
 
   public addNewUser() {
-    this.users.push(new User("7", "Moe", "Prettiest bartender ever", "./resources/images/moe.png"));
+    this.usersService.addUser(new User("7", "Moe", "Prettiest bartender ever", "./resources/images/moe.png"))
   }
 
   private removeUser(data) {
-    var index = this.users.findIndex(user => {return user.id == data.id});
-    this.users.splice(index, 1);
+    this.usersService.removeUser(data.id);
   }
 
   private showUserDetails(data) {

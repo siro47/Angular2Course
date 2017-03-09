@@ -28,8 +28,8 @@ export class UsersService {
 
   constructor() { }
 
-  public getUsers() :User[] {
-    return this.users;
+  public getUsers() : Promise<User[]> {
+    return Promise.resolve(this.users);
   }
 
   public getUser(id: string) : User {
@@ -38,6 +38,15 @@ export class UsersService {
         return user;
       }
     }
+  }
+
+  public addUser(user: User) {
+    this.users.push(user);
+  }
+
+  public removeUser(id: string) {
+    var index = this.users.findIndex(user => {return user.id == id});
+    this.users.splice(index, 1);
   }
 
 }
