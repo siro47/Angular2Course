@@ -1,19 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-class User {
-  id: string;
-  name: string;
-  desc: string;
-  image: string;
-
-  constructor(id: string, name: string, desc:string, image:string) {
-    this.id = id;
-    this.name = name;
-    this.desc = desc;
-    this.image = image;
-  }
-}
+import { User, UsersService } from './users.service';
 
 @Component({
   selector: 'app-users-section',
@@ -24,19 +12,15 @@ export class UsersSectionComponent implements OnInit {
 
   private section_title = 'USERS';
 
-  private users = [
-    new User("1", "Bart Simpson", "Always up to no good", "./resources/images/bart-simpson.png"),
-    new User("2", "Lisa Simpson", "The best of his class", "./resources/images/lisa-simpson.png"),
-    new User("3", "Homer Simpson", "D'oh!", "./resources/images/homer-simpson.png"),
-    new User("4", "Marge Simpson", "Great wife", "./resources/images/marge-simpson.png"),
-    new User("5", "Milhouse", "Nobody likes Milhouse!", "./resources/images/milhouse.jpeg"),
-    new User("6", "Ppal. Skinner", "I love my mum", "./resources/images/skinner.png"),
-  ]
+  private users: User[];
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private usersService: UsersService) { }
 
-  ngOnInit () {}
+  ngOnInit () {
+    this.users = this.usersService.getUsers()
+  }
 
   public addNewUser() {
     this.users.push(new User("7", "Moe", "Prettiest bartender ever", "./resources/images/moe.png"));

@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { UserDetailsComponent } from './users-section/user-details/user-details.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
+import { UsersService } from "./users-section/users.service";
+
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: AdminLayoutComponent, children: [
@@ -45,7 +47,9 @@ const appRoutes: Routes = [
     Angular2FontAwesomeModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    UsersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
