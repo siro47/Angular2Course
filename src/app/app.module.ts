@@ -14,12 +14,15 @@ import { GroupsSectionComponent } from './groups-section/groups-section.componen
 import { UsersFormComponent } from './users-section/users-form/users-form.component';
 import { LoginComponent } from './login/login.component';
 import { UserDetailsComponent } from './users-section/user-details/user-details.component';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'users', component: UsersSectionComponent },
-  { path: 'user/:id', component: UserDetailsComponent },
-  { path: 'groups', component: GroupsSectionComponent },
+  { path: '', component: AdminLayoutComponent, children: [
+    { path: 'users', component: UsersSectionComponent  },
+    { path: 'user/:id', component: UserDetailsComponent, data: {title: 'hello'}},
+    { path: 'groups', component: GroupsSectionComponent }
+  ]},
   { path: '**', redirectTo: '/login'}
 ]
 
@@ -31,7 +34,8 @@ const appRoutes: Routes = [
     GroupsSectionComponent,
     UsersFormComponent,
     LoginComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    AdminLayoutComponent
   ],
   imports: [
     BrowserModule,

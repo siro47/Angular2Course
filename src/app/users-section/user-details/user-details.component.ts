@@ -19,6 +19,8 @@ export class UserDetailsComponent implements OnInit {
       // (+) converts string 'id' to a number
       .subscribe(params => {this.id = +params['id']})
 
+    this.route.data
+      .subscribe(data => console.log(data))
   }
 
 }
