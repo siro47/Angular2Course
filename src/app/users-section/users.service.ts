@@ -32,4 +32,12 @@ export class UsersService {
     return this.users;
   }
 
+  public getUser(id: string) : User {
+    for (var user of this.users) {
+      if (user.id == id) {
+        return user;
+      }
+    }
+  }
+
 }
