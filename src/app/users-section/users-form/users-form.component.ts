@@ -13,18 +13,24 @@ export class UsersFormComponent implements OnInit {
   public myForm: FormGroup;
 
   constructor(private router: Router,
-              private usersService: UsersService) { }
+              private usersService: UsersService,
+              private fb: FormBuilder) {
+
+      this.myForm = fb.group({
+        name: fb.group({
+          firstName: ['', [<any>Validators.required]],
+          lastName: ['', [<any>Validators.required]],
+        }),
+        desc: ['', [<any>Validators.required, <any>Validators.minLength(5)]]
+      });
+  }
 
   ngOnInit() {
-    this.myForm = new FormGroup({
-      name: new FormControl('', [<any>Validators.required]),
-      desc: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
-    });
   }
 
   save(value, isValid) {
     if (isValid) {
-      var newUser = new User ( new Date().getTime().toString(), value.name, value.desc, '');
+      var newUser = new User ( new Date().getTime().toString(), value.name.firstName + ' ' + value.name.lastName, value.desc, '');
       this.usersService.addUser(newUser)
       this.router.navigate(['/users']);
     }

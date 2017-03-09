@@ -1,11 +1,16 @@
 <div class="container">
   <h3> ADD USER</h3>
   <form [formGroup]="myForm" (ngSubmit)="save(myForm.value, myForm.valid)">
-    <div>
-      <input type="text" name="name" placeholder="Insert name.." formControlName="name">
+    <div formGroupName="name">
+      <div>
+        <input type="text" name="firstName" placeholder="Insert first name.." formControlName="firstName">
+      </div>
+      <div>
+        <input type="text" name="lastName" placeholder="Insert last name.." formControlName="lastName">
+      </div>
     </div>
     <div>
-      <input type="text" name="desc" placeholder="Inser des.." formControlName="desc">
+      <input type="text" name="desc" placeholder="Inser desc.." formControlName="desc">
     </div>
     <div>
       <button type="submit">Aceptar</button>
