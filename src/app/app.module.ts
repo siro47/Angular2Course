@@ -18,6 +18,7 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
 import { UsersService } from "./users-section/users.service";
 import { SimpsonNameDirective } from './shared/simpson-name.directive';
+import { AuthGuardService } from "./auth/auth-guard.service";
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -26,7 +27,7 @@ const appRoutes: Routes = [
     { path: 'users/form', component: UsersFormComponent},
     { path: 'user/:id', component: UserDetailsComponent, data: {title: 'hello'}},
     { path: 'groups', component: GroupsSectionComponent }
-  ]},
+  ], canActivate: [AuthGuardService]},
   { path: '**', redirectTo: '/login'}
 ]
 
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    UsersService
+    UsersService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
