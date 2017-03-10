@@ -6,8 +6,13 @@ import { Router } from '@angular/router';
 export class AuthGuardService implements CanActivate{
 
   canActivate() {
-    this.router.navigate(['/login']);
-    return false;
+    var authToken = localStorage.getItem('token')
+    if (authToken) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 
   constructor( private router: Router) {
