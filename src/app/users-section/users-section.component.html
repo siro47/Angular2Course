@@ -1,10 +1,16 @@
-<h1>
-  {{section_title}}
-</h1>
-<div *ngFor="let user of users" class="col-xs-12 col-sm-6 col-md-6">
-  <custom-card (imgClicked)="showUserDetails($event, data)" (removeClicked)="removeUser($event, data)" [data]="user"></custom-card>
+<div class="container">
+  <h1>
+    {{section_title}}
+  </h1>
+  <div class="col-xs-12 search-container">
+    <search></search>
+  </div>
+  <div *ngFor="let user of users" class="col-xs-12 col-sm-6 col-md-6">
+    <custom-card (imgClicked)="showUserDetails($event, data)" (removeClicked)="removeUser($event, data)" [data]="user"></custom-card>
+  </div>
+
+  <div class="col-xs-12">
+    <button md-button class="pull-right" (click)="addNewUser()">add</button>
+  </div>
 </div>
 
-<div class="col-xs-12">
-  <button md-button class="pull-right" (click)="addNewUser()">add</button>
-</div>

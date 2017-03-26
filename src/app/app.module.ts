@@ -19,9 +19,11 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { UsersService } from "./users-section/users.service";
 import { SimpsonNameDirective } from './shared/simpson-name.directive';
 import { AuthGuardService } from "./auth/auth-guard.service";
+import { SearchComponent } from './shared/search/search.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: '', component: AdminLayoutComponent, loadChildren:''},
   { path: '', component: AdminLayoutComponent, children: [
     { path: 'users', component: UsersSectionComponent  },
     { path: 'users/form', component: UsersFormComponent},
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     LoginComponent,
     UserDetailsComponent,
     AdminLayoutComponent,
-    SimpsonNameDirective
+    SimpsonNameDirective,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
