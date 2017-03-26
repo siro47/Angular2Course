@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import "rxjs/add/operator/toPromise"
+import "rxjs/add/operator/map"
+
 
 export class User {
   id: string;
@@ -26,10 +30,12 @@ export class UsersService {
     new User("6", "Ppal. Skinner", "I love my mum", "./resources/images/skinner.png"),
   ]
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   public getUsers() : Promise<User[]> {
-    return Promise.resolve(this.users);
+    return this.http.get('http://localhost:3000/users')
+      .map(result => result.json())
+      .toPromise();
   }
 
   private nameHas(filter) {
