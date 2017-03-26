@@ -32,6 +32,16 @@ export class UsersService {
     return Promise.resolve(this.users);
   }
 
+  private nameHas(filter) {
+    return function(element) {
+      return element.name.indexOf(filter) >= 0;
+    }
+  }
+
+  public getUsersFiltered(filter) : Promise<User[]> {
+    return Promise.resolve(this.users.filter(this.nameHas(filter)));
+  }
+
   public getUser(id: string) : User {
     for (var user of this.users) {
       if (user.id == id) {

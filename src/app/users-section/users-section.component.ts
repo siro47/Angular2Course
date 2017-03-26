@@ -33,4 +33,8 @@ export class UsersSectionComponent implements OnInit {
   private showUserDetails(data) {
     this.router.navigate(['/user', data.id]);
   }
+
+  private filterUsers(filter) {
+    this.usersService.getUsersFiltered(filter).then(users => this.users = users)
+  }
 }

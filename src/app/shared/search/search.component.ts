@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import {Observable} from "rxjs/Observable";
+import "rxjs/add/observable/interval";
+import "rxjs/add/observable/timer";
+import "rxjs/add/operator/debounce"
+import "rxjs/add/operator/merge"
 
 @Component({
   selector: 'search',
@@ -7,6 +12,8 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  @Output()
+  filterChanged = new EventEmitter();
 
   public searchForm: FormGroup;
 
@@ -18,7 +25,10 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm.valueChanges
-      .subscribe(x => console.log(x))
+      .debounce(() => Observable.timer(1000))
+      .subscribe( filter => {
+        this.filterChanged.emit(filter.search);
+      })
   }
 
 }
