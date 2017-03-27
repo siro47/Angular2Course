@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, RequestOptions, Http } from '@angular/http';
 import {Observable} from "rxjs/Observable";
 import {CustomHttpService} from "../shared/network/custom-http.service";
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AuthService {
