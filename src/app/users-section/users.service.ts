@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Headers, RequestOptions, Http } from '@angular/http';
 import "rxjs/add/operator/toPromise"
 import "rxjs/add/operator/map"
 import {Observable} from "rxjs/Observable";
@@ -23,7 +23,9 @@ export class User {
 @Injectable()
 export class UsersService {
 
-  USERS_URL = 'http://localhost:3000/users';
+  BASE_URL = 'http://localhost:3000';
+  GET_USERS_URL = '/users';
+  POST_USER_URL = '/user';
 
   private users = [
     new User("1", "Bart Simpson", "Always up to no good", "./resources/images/bart-simpson.png"),
@@ -37,7 +39,7 @@ export class UsersService {
   constructor(private http: Http) { }
 
   public getUsers() : Promise<User[]> {
-    return this.http.get(this.USERS_URL)
+    return this.http.get(this.BASE_URL + this.GET_USERS_URL)
       .map(result => result.json())
       .catch(function(err){ console.log(err); return Observable.throw(err); })
       .toPromise()
@@ -62,7 +64,13 @@ export class UsersService {
   }
 
   public addUser(user: User) {
-    this.users.push(user);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let data = user;
+    return this.http.post(this.BASE_URL + this.POST_USER_URL, data, options)
+      .map(result => result.json())
+      .catch(function(err){ console.log(err); return Observable.throw(err); })
+      .toPromise()
   }
 
   public removeUser(id: string) {

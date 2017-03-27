@@ -20,6 +20,7 @@ import { UsersService } from "./users-section/users.service";
 import { SimpsonNameDirective } from './shared/simpson-name.directive';
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { SearchComponent } from './shared/search/search.component';
+import {AuthService} from "./auth/auth.service";
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     UsersService,
-    AuthGuardService
+    AuthGuardService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

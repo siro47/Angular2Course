@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -8,15 +9,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   public checkForm (form) {
-    //TODO - Actual validation against server
-    localStorage.setItem('token', 'mytoken');
-    this.router.navigate(['/users']);
-
+    this.authService.login(form.value)
+      .then(result => {
+        if (result.userToken) {
+          localStorage.setItem('token', result.userToken);
+          this.router.navigate(['/users']);
+        }
+      });
   }
 }
