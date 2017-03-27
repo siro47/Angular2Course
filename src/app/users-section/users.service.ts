@@ -4,6 +4,7 @@ import "rxjs/add/operator/toPromise"
 import "rxjs/add/operator/map"
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/throw';
+import {CustomHttpService} from "../shared/network/custom-http.service";
 
 
 export class User {
@@ -36,7 +37,7 @@ export class UsersService {
     new User("6", "Ppal. Skinner", "I love my mum", "./resources/images/skinner.png"),
   ]
 
-  constructor(private http: Http) { }
+  constructor(private http: CustomHttpService) { }
 
   public getUsers() : Promise<User[]> {
     return this.http.get(this.BASE_URL + this.GET_USERS_URL)

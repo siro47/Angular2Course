@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, RequestOptions, Http } from '@angular/http';
 import {Observable} from "rxjs/Observable";
+import {CustomHttpService} from "../shared/network/custom-http.service";
 
 @Injectable()
 export class AuthService {
@@ -8,7 +9,7 @@ export class AuthService {
   BASE_URL = 'http://localhost:3000';
   LOGIN_URL = '/login';
 
-  constructor(private http: Http) { }
+  constructor(private http: CustomHttpService) { }
 
   public login(data) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
