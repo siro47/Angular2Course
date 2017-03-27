@@ -9,14 +9,16 @@ import {CustomHttpService} from "../shared/network/custom-http.service";
 
 export class User {
   id: string;
-  name: string;
-  desc: string;
+  username: string;
+  password: string;
+  description: string;
   image: string;
 
-  constructor(id: string, name: string, desc:string, image:string) {
+  constructor(id: string, name: string, password: string, desc:string, image:string) {
     this.id = id;
-    this.name = name;
-    this.desc = desc;
+    this.username = name;
+    this.password = password;
+    this.description = desc;
     this.image = image;
   }
 }
@@ -29,12 +31,12 @@ export class UsersService {
   POST_USER_URL = '/user';
 
   private users = [
-    new User("1", "Bart Simpson", "Always up to no good", "./resources/images/bart-simpson.png"),
-    new User("2", "Lisa Simpson", "The best of his class", "./resources/images/lisa-simpson.png"),
-    new User("3", "Homer Simpson", "D'oh!", "./resources/images/homer-simpson.png"),
-    new User("4", "Marge Simpson", "Great wife", "./resources/images/marge-simpson.png"),
-    new User("5", "Milhouse", "Nobody likes Milhouse!", "./resources/images/milhouse.jpeg"),
-    new User("6", "Ppal. Skinner", "I love my mum", "./resources/images/skinner.png"),
+    new User("1", "Bart Simpson", "aaaaa", "Always up to no good", "./resources/images/bart-simpson.png"),
+    new User("2", "Lisa Simpson", "aaaaa", "The best of his class", "./resources/images/lisa-simpson.png"),
+    new User("3", "Homer Simpson", "aaaaa", "D'oh!", "./resources/images/homer-simpson.png"),
+    new User("4", "Marge Simpson", "aaaaa", "Great wife", "./resources/images/marge-simpson.png"),
+    new User("5", "Milhouse", "aaaaa", "Nobody likes Milhouse!", "./resources/images/milhouse.jpeg"),
+    new User("6", "Ppal. Skinner", "aaaaa", "I love my mum", "./resources/images/skinner.png"),
   ]
 
   constructor(private http: CustomHttpService) { }
@@ -65,7 +67,8 @@ export class UsersService {
   }
 
   public addUser(user: User) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let token = localStorage.getItem('token');
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token });
     let options = new RequestOptions({ headers: headers });
     let data = user;
     return this.http.post(this.BASE_URL + this.POST_USER_URL, data, options)

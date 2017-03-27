@@ -22,6 +22,7 @@ export class UsersFormComponent implements OnInit {
           firstName: ['', [<any>Validators.required]],
           lastName: ['', [<any>Validators.required]],
         }, { validator: simpsonNameValidator }),
+        password: ['', [<any>Validators.required, <any>Validators.minLength(5)]],
         desc: ['', [<any>Validators.required, <any>Validators.minLength(5)]]
       });
   }
@@ -31,7 +32,7 @@ export class UsersFormComponent implements OnInit {
 
   save(value, isValid) {
     if (isValid) {
-      var newUser = new User ( new Date().getTime().toString(), value.name.firstName + ' ' + value.name.lastName, value.desc, '');
+      var newUser = new User ( new Date().getTime().toString(), value.name.firstName + ' ' + value.name.lastName, value.password, value.desc, '');
       this.usersService.addUser(newUser)
       this.router.navigate(['/users']);
     } else {
