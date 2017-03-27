@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { User, UsersService } from './users.service';
+import {MultiplyStringPipe} from "../multiply-string.pipe";
 
 @Component({
   selector: 'app-users-section',

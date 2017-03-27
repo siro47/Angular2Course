@@ -15,6 +15,7 @@ import { MaterialModule } from '@angular/material';
 import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
 import {AuthService} from "../auth/auth.service";
 import {CustomHttpService} from "../shared/network/custom-http.service";
+import {MultiplyStringPipe} from "../multiply-string.pipe";
 
 const routes: Routes = [
   { path: 'users', component: UsersSectionComponent  },
@@ -32,6 +33,7 @@ const routes: Routes = [
     SimpsonNameDirective,
     SearchComponent,
     CustomCardComponent,
+    MultiplyStringPipe
   ],
   imports: [
     RouterModule.forChild(routes),

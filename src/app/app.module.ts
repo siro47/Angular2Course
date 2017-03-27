@@ -12,7 +12,6 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
 import {AuthService} from "./auth/auth.service";
 import {CustomHttpService} from "./shared/network/custom-http.service";
-
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: AdminLayoutComponent, loadChildren:'./admin-layout/admin-layout.module#AdminLayoutModule'},
