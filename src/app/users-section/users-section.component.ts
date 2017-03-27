@@ -19,7 +19,8 @@ export class UsersSectionComponent implements OnInit {
               private usersService: UsersService) { }
 
   ngOnInit () {
-    this.usersService.getUsers().then(users => this.users = users);
+    this.usersService.getUsers()
+      .then(users => this.users = users)
   }
 
   public addNewUser() {

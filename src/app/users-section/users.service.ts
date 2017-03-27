@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import "rxjs/add/operator/toPromise"
 import "rxjs/add/operator/map"
+import {Observable} from "rxjs/Observable";
+import 'rxjs/add/observable/throw';
 
 
 export class User {
@@ -21,6 +23,8 @@ export class User {
 @Injectable()
 export class UsersService {
 
+  USERS_URL = 'http://localhost:3000/users';
+
   private users = [
     new User("1", "Bart Simpson", "Always up to no good", "./resources/images/bart-simpson.png"),
     new User("2", "Lisa Simpson", "The best of his class", "./resources/images/lisa-simpson.png"),
@@ -33,9 +37,10 @@ export class UsersService {
   constructor(private http: Http) { }
 
   public getUsers() : Promise<User[]> {
-    return this.http.get('http://localhost:3000/users')
+    return this.http.get(this.USERS_URL)
       .map(result => result.json())
-      .toPromise();
+      .catch(function(err){ console.log(err); return Observable.throw(err); })
+      .toPromise()
   }
 
   private nameHas(filter) {
